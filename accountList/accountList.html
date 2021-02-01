@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Account List Pagination">
+		<div class="slds-m-around_medium">
+            <!-- Start account list -->
+            <p class="slds-p-horizontal_medium">Display records in Pages </p>
+            <br></br>
+            <template if:true={data}>
+                <lightning-datatable data={data} columns={columns} key-field="Id">
+                </lightning-datatable>
+            </template>
+            <template if:true={errors}>
+                <div class="slds-text-color_error">
+					An error occurred while loading the account list
+				</div>
+            </template>
+        </div>
+        <div class="slds-m-around_medium">
+            <p class="slds-m-vertical_medium content">
+                     Displaying {startingRecord} to {endingRecord} of {totalRecords} records.
+                     Page {page} of {totalPage}. 
+            </p><p class="slds-align_absolute-center">{page}</p> 
+            <c-paginator onprevious={handlePrevious} onnext={handleNext} onfirst={handleFirst} onlast={handleLast}>
+            </c-paginator>
+
+        </div>
+    </lightning-card>
+</template>
